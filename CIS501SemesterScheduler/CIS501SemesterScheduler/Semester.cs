@@ -16,7 +16,7 @@ namespace CIS501SemesterScheduler
         {
             Name = s;
             Contents = SC;
-            fielName = f;
+            fileName = f;
         }
 
         public string getName()

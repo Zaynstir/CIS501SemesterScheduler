@@ -20,8 +20,8 @@ namespace CIS501SemesterScheduler
         public void ClearEverything()
         {
             string[,] non = { { "" } };
-            local = new Semester("",non);
-            SIS = new Semester("", non);
+            local = new Semester("",non,"");
+            SIS = new Semester("", non,"");
         }
     }
 }

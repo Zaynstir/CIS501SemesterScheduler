@@ -31,19 +31,20 @@ namespace CIS501SemesterScheduler
             return SIS;
         }
         
-        public string[] getErrors()
+        public List<string> getErrors()
         {
-            string[] errors;
-            int m = 0;
+            List<string> errors = new List<string>();
             bool flag = false;
-            for(int i = 0; i < local.Length; i++)
+            string[,] localCont = local.getContents();
+            string[,] SISCont = SIS.getContents();
+            for(int i = 0; i < localCont.Length; i++)
             {
                 bool flagSection = false;
-                for (int k = 0; k < SIS.Lenth; k++)
+                for (int k = 0; k < SISCont.Length; k++)
                 {
-                    if(local[i][1] == SIS[k][1])
+                    if(localCont[i,1] == SISCont[k,1])
                     {
-                        if(local[i][2] == SIS[k][2])
+                        if(localCont[i,2] == SISCont[k,2])
                         {
                             flagSection = true;
                             break;
@@ -53,17 +54,17 @@ namespace CIS501SemesterScheduler
                 if (!flagSection)
                 {
                     flag = true;
-                    errors[m] = "<< Section CIS " + local[i][1] + " " + local[i][2] + " not found in current semester!";
+                    errors.Add("<< Section CIS " + localCont[i,1] + " " + localCont[i,2] + " not found in current semester!");
                 }
             }
-            for (int i = 0; i < SIS.Length; i++)
+            for (int i = 0; i < SISCont.Length; i++)
             {
                 bool flagSection = false;
-                for (int k = 0; k < local.Lenth; k++)
+                for (int k = 0; k < localCont.Length; k++)
                 {
-                    if (local[i][1] == SIS[k][1])
+                    if (localCont[i,1] == SISCont[k,1])
                     {
-                        if (local[i][2] == SIS[k][2])
+                        if (localCont[i,2] == SISCont[k,2])
                         {
                             flagSection = true;
                             break;
@@ -73,19 +74,14 @@ namespace CIS501SemesterScheduler
                 if (!flagSection)
                 {
                     flag = true;
-                    errors[m] = "<< Section CIS " + SIS[i][1] + " " + SIS[i][2] + " is new in current semester!";
+                    errors.Add("<< Section CIS " + SISCont[i,1] + " " + SISCont[i,2] + " is new in current semester!");
                 }
             }
             if (!flag)
             {
-                string[] ray = { "Success" };
-                return ray;
+                errors.Add("Success");
             }
-            else
-            {
-                return errors;
-            }
-            return "";
+            return errors;
         }
 
     }

@@ -21,8 +21,9 @@ namespace CIS501SemesterScheduler
         }
 
         public Semester readFile()
-        { 
-            string[,] contents;
+        {
+            var lineCount = File.ReadAllLines(fileName).Length;
+            string[,] contents = new string[lineCount,23];
             StreamReader file = new StreamReader(fileName);
             string name = file.ReadLine();
             name = name.Substring(0, name.IndexOf(','));

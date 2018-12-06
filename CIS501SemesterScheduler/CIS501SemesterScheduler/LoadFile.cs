@@ -9,7 +9,6 @@ namespace CIS501SemesterScheduler
     class LoadFile
     {
         string fileName;
-        string[,] file;
 
         public LoadFile(string f)
         {

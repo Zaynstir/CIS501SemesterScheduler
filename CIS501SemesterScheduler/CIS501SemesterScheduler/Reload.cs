@@ -17,7 +17,7 @@ namespace CIS501SemesterScheduler
             SIS = sis;
         }
 
-        public string[] reloadSemesters()
+        public List<string> reloadSemesters()
         {
             ReadFile rLocal = new ReadFile(local.getFileName());
             ReadFile rSIS = new ReadFile(SIS.getFileName());

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,11 +30,11 @@ namespace CIS501SemesterScheduler
         private void button_Reload_Click(object sender, EventArgs e)
         {
             Reload r = new Reload(local, SIS);
-            string[] ray = r.reloadSemesters();
+            List<string> ray = r.reloadSemesters();
             text_Output.Text = "";
-            for (int i = 0; i < ray.Length; i++)
+            foreach (var txt in ray)
             {
-                text_Output.Text += ray[i];
+                text_Output.Text += txt;
             }
             text_Local.Text = local.getFileName();
             text_KSIS.Text = SIS.getFileName();
@@ -54,7 +55,7 @@ namespace CIS501SemesterScheduler
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             About a = new About();
-            text_Output.Text = a.getDescription();
+            text_Output.Text = a.giveDescription();
         }
 
         private void verifyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -62,13 +63,13 @@ namespace CIS501SemesterScheduler
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string fileName = openFileDialog1.FileName;
-                Verify v = new Verify(fileName);
-                SIS = v.GetFile();
-                v.GetErrors();
-                string[] ray = text_Output.Text = "";
-                for (int i = 0; i < ray.Length; i++)
+                Verify v = new Verify(fileName,local);
+                SIS = v.getFile();
+                List<string> ray = v.getErrors();
+                text_Output.Text = "";
+                foreach (var txt in ray)
                 {
-                    text_Output.Text += ray[i];
+                    text_Output.Text += txt;
                 }
                 text_Local.Text = local.getFileName();
                 text_KSIS.Text = SIS.getFileName();

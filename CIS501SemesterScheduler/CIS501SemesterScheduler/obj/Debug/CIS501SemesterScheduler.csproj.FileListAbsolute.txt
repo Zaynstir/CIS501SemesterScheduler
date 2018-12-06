@@ -1,0 +1,10 @@
+C:\Users\Zaybr\source\repos\CIS501SemesterScheduler\CIS501SemesterScheduler\CIS501SemesterScheduler\obj\Debug\CIS501SemesterScheduler.csprojResolveAssemblyReference.cache
+C:\Users\Zaybr\source\repos\CIS501SemesterScheduler\CIS501SemesterScheduler\CIS501SemesterScheduler\obj\Debug\CIS501SemesterScheduler.Form1.resources
+C:\Users\Zaybr\source\repos\CIS501SemesterScheduler\CIS501SemesterScheduler\CIS501SemesterScheduler\obj\Debug\CIS501SemesterScheduler.Properties.Resources.resources
+C:\Users\Zaybr\source\repos\CIS501SemesterScheduler\CIS501SemesterScheduler\CIS501SemesterScheduler\obj\Debug\CIS501SemesterScheduler.csproj.GenerateResource.cache
+C:\Users\Zaybr\source\repos\CIS501SemesterScheduler\CIS501SemesterScheduler\CIS501SemesterScheduler\obj\Debug\CIS501SemesterScheduler.csproj.CoreCompileInputs.cache
+C:\Users\Zaybr\source\repos\CIS501SemesterScheduler\CIS501SemesterScheduler\CIS501SemesterScheduler\bin\Debug\CIS501SemesterScheduler.exe.config
+C:\Users\Zaybr\source\repos\CIS501SemesterScheduler\CIS501SemesterScheduler\CIS501SemesterScheduler\bin\Debug\CIS501SemesterScheduler.exe
+C:\Users\Zaybr\source\repos\CIS501SemesterScheduler\CIS501SemesterScheduler\CIS501SemesterScheduler\bin\Debug\CIS501SemesterScheduler.pdb
+C:\Users\Zaybr\source\repos\CIS501SemesterScheduler\CIS501SemesterScheduler\CIS501SemesterScheduler\obj\Debug\CIS501SemesterScheduler.exe
+C:\Users\Zaybr\source\repos\CIS501SemesterScheduler\CIS501SemesterScheduler\CIS501SemesterScheduler\obj\Debug\CIS501SemesterScheduler.pdb
