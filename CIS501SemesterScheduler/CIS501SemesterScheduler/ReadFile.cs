@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -32,8 +33,16 @@ namespace CIS501SemesterScheduler
             while (!file.EndOfStream)
             {
                 int k = 0;
-                bool passed = false;
+                //bool passed = false;
                 string txt = file.ReadLine();
+                Regex regx = new Regex(',' + "(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
+                string[] split = regx.Split(txt);
+                foreach(string seperated in split)
+                {
+                    contents[i, k] = seperated;
+                    k++;
+                }
+                /*Console.WriteLine(txt);
                 while(txt.Length > 0)
                 {
                     if (txt.IndexOf('"') < txt.IndexOf(',') && !passed)
@@ -47,6 +56,8 @@ namespace CIS501SemesterScheduler
                         if(txt.IndexOf(',') != -1)
                         {
                             contents[i, k] = txt.Substring(0, txt.IndexOf(','));
+                            Console.WriteLine(i + " " + k);
+
                             txt = txt.Substring(txt.IndexOf(','));
                         }
                         else
@@ -56,7 +67,7 @@ namespace CIS501SemesterScheduler
                         }
                     }
                     k++;
-                }
+                }*/
                 i++;
             }
             Semester s = new Semester(name, contents, fileName);

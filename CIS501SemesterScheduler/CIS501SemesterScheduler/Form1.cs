@@ -32,7 +32,7 @@ namespace CIS501SemesterScheduler
             Reload r = new Reload(local, SIS);
             List<string> ray = r.reloadSemesters();
             text_Output.Text = "";
-            foreach (var txt in ray)
+            foreach (string txt in ray)
             {
                 text_Output.Text += txt;
             }
@@ -67,7 +67,7 @@ namespace CIS501SemesterScheduler
                 SIS = v.getFile();
                 List<string> ray = v.getErrors();
                 text_Output.Text = "";
-                foreach (var txt in ray)
+                foreach(string txt in ray)
                 {
                     text_Output.Text += txt;
                 }
