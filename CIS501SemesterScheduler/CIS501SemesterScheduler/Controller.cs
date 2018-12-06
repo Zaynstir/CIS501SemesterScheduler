@@ -8,5 +8,10 @@ namespace CIS501SemesterScheduler
 {
     class Controller
     {
+        public Controller()
+        {
+
+        }
+        
     }
 }

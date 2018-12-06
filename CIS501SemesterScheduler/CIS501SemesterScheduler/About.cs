@@ -8,5 +8,16 @@ namespace CIS501SemesterScheduler
 {
     class About
     {
+        //Semester semester;
+
+        public About(/*Semester s*/)
+        {
+            //semester = s;
+        }
+
+        public string giveDescription()
+        {
+            return "SVT Version: 1.0 --- Version Date: 12/5/2018";
+        }
     }
 }
