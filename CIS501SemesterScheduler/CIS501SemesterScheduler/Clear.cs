@@ -11,10 +11,12 @@ namespace CIS501SemesterScheduler
         Semester local;
         Semester SIS;
 
-        public Clear(Semester l, Semester sis)
+        public Clear(out Semester l, out Semester sis)
         {
-            local = l;
-            SIS = sis;
+
+            string[,] non = { { "" } };
+            l = new Semester("", non, "");
+            sis = new Semester("", non, "");
         }
 
         public void ClearEverything()

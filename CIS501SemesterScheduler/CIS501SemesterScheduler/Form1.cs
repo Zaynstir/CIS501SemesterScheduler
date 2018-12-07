@@ -13,31 +13,29 @@ namespace CIS501SemesterScheduler
 {
     public partial class Form1 : Form
     {
-        Semester local;
-        Semester SIS;
+        Controller c;
 
         public Form1()
         {
             InitializeComponent();
+            c = new Controller();
         }
 
         private void button_Clear_Click(object sender, EventArgs e)
         {
-            Clear c = new Clear(local, SIS);
-            c.ClearEverything();
+            c.Clear();
         }
 
         private void button_Reload_Click(object sender, EventArgs e)
         {
-            Reload r = new Reload(local, SIS);
-            List<string> ray = r.reloadSemesters();
+            List<string> ray = c.Reload();
             text_Output.Text = "";
             foreach (string txt in ray)
             {
                 text_Output.Text += txt;
             }
-            text_Local.Text = local.getFileName();
-            text_KSIS.Text = SIS.getFileName();
+            text_Local.Text = c.local.getFileName();
+            text_KSIS.Text = c.SIS.getFileName();
 
         }
 
@@ -46,16 +44,14 @@ namespace CIS501SemesterScheduler
             if(openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string fileName = openFileDialog1.FileName;
-                LoadFile lf = new LoadFile(fileName);
-                local = lf.LoadSemester();
-                text_Local.Text = local.getFileName();
+                c.Load(fileName);
+                text_Local.Text = c.local.getFileName();
             }
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            About a = new About();
-            text_Output.Text = a.giveDescription();
+            text_Output.Text = c.About();
         }
 
         private void verifyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -63,16 +59,14 @@ namespace CIS501SemesterScheduler
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string fileName = openFileDialog1.FileName;
-                Verify v = new Verify(fileName,local);
-                SIS = v.getFile();
-                List<string> ray = v.getErrors();
+                List<string> ray = c.Verify(fileName);
                 text_Output.Text = "";
                 foreach(string txt in ray)
                 {
                     text_Output.Text += txt;
                 }
-                text_Local.Text = local.getFileName();
-                text_KSIS.Text = SIS.getFileName();
+                text_Local.Text = c.local.getFileName();
+                text_KSIS.Text = c.SIS.getFileName();
             }
         }
     }

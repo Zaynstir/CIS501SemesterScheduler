@@ -23,56 +23,33 @@ namespace CIS501SemesterScheduler
 
         public Semester readFile()
         {
-            var lineCount = File.ReadAllLines(fileName).Length;
-            string[,] contents = new string[lineCount,23];
-            StreamReader file = new StreamReader(fileName);
-            string name = file.ReadLine();
-            name = name.Substring(0, name.IndexOf(','));
-            int i = 0;
-            file.ReadLine();
-            while (!file.EndOfStream)
+            if(fileName != "")
             {
-                int k = 0;
-                //bool passed = false;
-                string txt = file.ReadLine();
-                Regex regx = new Regex(',' + "(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
-                string[] split = regx.Split(txt);
-                foreach(string seperated in split)
+                var lineCount = File.ReadAllLines(fileName).Length;
+                string[,] contents = new string[lineCount, 23];
+                StreamReader file = new StreamReader(fileName);
+                string name = file.ReadLine();
+                name = name.Substring(0, name.IndexOf(','));
+                int i = 0;
+                file.ReadLine();
+                while (!file.EndOfStream)
                 {
-                    //if (split[0] == null) break;
-                    contents[i, k] = seperated;
-                    k++;
+                    int k = 0;
+                    string txt = file.ReadLine();
+                    Regex regx = new Regex(',' + "(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
+                    string[] split = regx.Split(txt);
+                    foreach (string seperated in split)
+                    {
+                        contents[i, k] = seperated;
+                        k++;
+                    }
+                    i++;
                 }
-                /*Console.WriteLine(txt);
-                while(txt.Length > 0)
-                {
-                    if (txt.IndexOf('"') < txt.IndexOf(',') && !passed)
-                    {
-                        contents[i, k] = txt.Substring(0, txt.IndexOf(',', txt.IndexOf(',')));
-                        txt = txt.Substring(txt.IndexOf(',', txt.IndexOf(',')));
-                        passed = true;
-                    }
-                    else
-                    {
-                        if(txt.IndexOf(',') != -1)
-                        {
-                            contents[i, k] = txt.Substring(0, txt.IndexOf(','));
-                            Console.WriteLine(i + " " + k);
-
-                            txt = txt.Substring(txt.IndexOf(','));
-                        }
-                        else
-                        {
-                            contents[i, k] = txt;
-                            txt = "";
-                        }
-                    }
-                    k++;
-                }*/
-                i++;
+                Semester s = new Semester(name, contents, fileName);
+                return s;
             }
-            Semester s = new Semester(name, contents, fileName);
-            return s;
+            MessageBox.Show("Please Load the appropiate file types.");
+            return null;
         }
     }
 }
