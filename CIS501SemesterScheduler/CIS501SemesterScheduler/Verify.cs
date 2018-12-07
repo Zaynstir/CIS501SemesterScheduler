@@ -37,14 +37,34 @@ namespace CIS501SemesterScheduler
             bool flag = false;
             string[,] localCont = local.getContents();
             string[,] SISCont = SIS.getContents();
-            for(int i = 0; i < localCont.Length; i++)
+            for (int i = 0; i < SISCont.GetLength(0); i++)
             {
                 bool flagSection = false;
-                for (int k = 0; k < SISCont.Length; k++)
+                for (int k = 0; k < localCont.GetLength(0); k++)
+                {
+                    if (localCont[k, 1] == SISCont[i, 1])
+                    {
+                        if (localCont[k, 3] == SISCont[i, 3])
+                        {
+                            flagSection = true;
+                            break;
+                        }
+                    }
+                }
+                if (!flagSection)
+                {
+                    flag = true;
+                    errors.Add(">> Section CIS " + SISCont[i, 1] + " Section " + SISCont[i, 3] + " is not found in current semester!\r\n");
+                }
+            }
+            for (int i = 0; i < localCont.GetLength(0); i++)
+            {
+                bool flagSection = false;
+                for (int k = 0; k < SISCont.GetLength(0); k++)
                 {
                     if(localCont[i,1] == SISCont[k,1])
                     {
-                        if(localCont[i,2] == SISCont[k,2])
+                        if(localCont[i,3] == SISCont[k,3])
                         {
                             flagSection = true;
                             break;
@@ -54,27 +74,33 @@ namespace CIS501SemesterScheduler
                 if (!flagSection)
                 {
                     flag = true;
-                    errors.Add("<< Section CIS " + localCont[i,1] + " " + localCont[i,2] + " not found in current semester!");
+                    errors.Add("<< Section CIS " + localCont[i,1] + " Section " + localCont[i,3] + " is new in current semester!\r\n");
                 }
             }
-            for (int i = 0; i < SISCont.Length; i++)
+            for (int i = 0; i < localCont.GetLength(0); i++)
             {
                 bool flagSection = false;
-                for (int k = 0; k < localCont.Length; k++)
+                for (int k = 0; k < SISCont.GetLength(0); k++)
                 {
-                    if (localCont[i,1] == SISCont[k,1])
+                    if (localCont[i, 1] == SISCont[k, 1])
                     {
-                        if (localCont[i,2] == SISCont[k,2])
+                        if (localCont[i, 3] == SISCont[k, 3])
                         {
-                            flagSection = true;
-                            break;
+                            for(int m = 0; m < 23; m++)
+                            {
+                                if(localCont[i,m] != SISCont[k, m])
+                                {
+                                    flagSection = true;
+                                    break;
+                                }
+                            }
                         }
                     }
                 }
-                if (!flagSection)
+                if (flagSection)
                 {
                     flag = true;
-                    errors.Add("<< Section CIS " + SISCont[i,1] + " " + SISCont[i,2] + " is new in current semester!");
+                    errors.Add("Section CIS " + localCont[i, 1] + " Section " + localCont[i, 3] + " has been changed in the current semester.\r\n");
                 }
             }
             if (!flag)

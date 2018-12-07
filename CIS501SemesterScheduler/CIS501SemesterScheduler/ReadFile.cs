@@ -39,6 +39,7 @@ namespace CIS501SemesterScheduler
                 string[] split = regx.Split(txt);
                 foreach(string seperated in split)
                 {
+                    //if (split[0] == null) break;
                     contents[i, k] = seperated;
                     k++;
                 }
