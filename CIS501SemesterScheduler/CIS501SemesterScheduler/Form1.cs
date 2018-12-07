@@ -24,6 +24,7 @@ namespace CIS501SemesterScheduler
         private void button_Clear_Click(object sender, EventArgs e)
         {
             c.Clear();
+            text_Output.Text = "Memory has been Cleared";
         }
 
         private void button_Reload_Click(object sender, EventArgs e)
